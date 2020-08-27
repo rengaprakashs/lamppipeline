@@ -1,0 +1,16 @@
+pipeline{
+    agent { label 'app2' }
+    stages{
+        stage('SCM checkout'){
+            steps{
+                git 'https://github.com/rengaprakashs/lamproles.git'
+            }
+        }
+        stage('Execute Ansible'){
+            steps{
+                ansiblePlaybook become: true, becomeUser: null, credentialsId: 'd1fbdba1-1b51-46f9-81c8-b1355c295c4e', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'main.yaml', sudoUser: null
+                
+            }
+        }
+    }
+}
