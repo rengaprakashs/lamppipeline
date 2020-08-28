@@ -1,5 +1,5 @@
 pipeline{
-    agent { label 'app2' }
+    agent { label 'abs2' }
     stages{
         stage('SCM checkout'){
             steps{
